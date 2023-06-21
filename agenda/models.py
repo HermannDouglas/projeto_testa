@@ -26,7 +26,7 @@ class Compromisso(models.Model):
     descricao = models.CharField(max_length=255)
     data_inicio = models.DateTimeField(null=True)
     data_fim = models.DateTimeField(null=True)
-    local = models.ForeignKey(Local, on_delete=models.CASCADE())
+    local = models.ForeignKey(Local, on_delete=models.CASCADE)
     convidados = models.ManyToManyField(Convidado)
 
     def __str__(self):
