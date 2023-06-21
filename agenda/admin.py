@@ -2,12 +2,20 @@ from django.contrib import admin
 from agenda.models import Compromisso, Local, Convidado
 
 
-class CompromissoInline(admin.TabularInline):
-    model = Compromisso
+class ConvidadosInline(admin.TabularInline):
+    model = Compromisso.convidados.through
 
 class ConvidadoAdmin(admin.ModelAdmin):
-    inlines = [CompromissoInline]
+    inlines = [
+        ConvidadosInline,
+    ]
 
-admin.site.register(Compromisso)
+class CompromissoAdmin(admin.ModelAdmin):
+    inlines = [
+        ConvidadosInline,
+    ]
+    exclude = ['convidados']
+
+admin.site.register(Compromisso, CompromissoAdmin)
 admin.site.register(Local)
-admin.site.register(Convidado)
+admin.site.register(Convidado, ConvidadoAdmin)
