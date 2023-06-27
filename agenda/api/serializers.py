@@ -31,4 +31,4 @@ class ConvidadoSerializer(serializers.HyperlinkedModelSerializer):
 class CompromissoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Compromisso
-        fields = ['descricao', 'data_inicio', 'data_fim', 'local', 'convidados', 'nota']
+        fields = ['descricao', 'data_inicio', 'data_fim', 'local', 'convidados', 'nota', 'registro']

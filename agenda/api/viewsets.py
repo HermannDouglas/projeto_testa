@@ -34,9 +34,18 @@ class ConvidadoViewSet(viewsets.ModelViewSet):
 class CompromissoViewSet(viewsets.ModelViewSet):
     queryset = Compromisso.objects.filter()
     serializer_class = CompromissoSerializer
+    filterset_fields = ['descricao', 'data_inicio']
+
     # permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        usuario = self.request.user.username
-        convidado = Convidado.objects.get(usuario__username=usuario)
-        return Compromisso.objects.filter(convidados=convidado)
+        desc = self.request.query_params.get('descricao')
+        queryset = Compromisso.objects.all()
+        if desc is not None:
+            queryset = queryset.filter(descricao=desc)
+        return queryset
+
+    # def get_queryset(self):
+    #     usuario = self.request.user.username
+    #     convidado = Convidado.objects.get(usuario__username=usuario)
+    #     return Compromisso.objects.filter(convidados=convidado)

@@ -32,6 +32,7 @@ class Compromisso(models.Model):
     local = models.ForeignKey(Local, on_delete=models.CASCADE)
     convidados = models.ManyToManyField(Convidado)
     nota = models.CharField(max_length=255, null=True, blank=True)
+    registro = models.FileField(upload_to='arquivos', null=True, blank=True)
 
     def __str__(self):
         return f'{self.descricao} começa {self.data_inicio} e termina em {self.data_fim}'
