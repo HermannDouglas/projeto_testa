@@ -19,16 +19,16 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class LocalSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Local
-        fields = ['nome', 'rua', 'numero']
+        fields = ['nome', 'rua', 'numero', 'foto']
 
 
 class ConvidadoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Convidado
-        fields = ['nome', 'email']
+        fields = ['nome', 'email', 'usuario']
 
 
 class CompromissoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Compromisso
-        fields = ['descricao', 'data_inicio', 'data_fim', 'local', 'convidados']
+        fields = ['descricao', 'data_inicio', 'data_fim', 'local', 'convidados', 'nota']

@@ -4,6 +4,7 @@ from django.db import models
 
 # Create your models here.
 class Local(models.Model):
+    foto = models.ImageField(upload_to='foto_locais', null=True, blank=True)
     nome = models.CharField(max_length=255)
     rua = models.CharField(max_length=255)
     numero = models.IntegerField()
@@ -18,7 +19,7 @@ class Local(models.Model):
 class Convidado(models.Model):
     nome = models.CharField(max_length=255)
     email = models.EmailField(null=True, blank=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.nome} - {self.email}'
